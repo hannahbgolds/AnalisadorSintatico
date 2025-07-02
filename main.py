@@ -53,8 +53,12 @@ def processar_exemplos():
         print(f"{i}. {os.path.basename(arquivo)}")
     
     try:
-        index_inicial = int(input(f"\nÍndice inicial (1-{len(arquivos_exemplo)}): "))
-        index_final = int(input(f"Índice final (1-{len(arquivos_exemplo)}): "))
+        entrada_inicial = input(f"\nÍndice inicial (1-{len(arquivos_exemplo)}): ").strip()
+        entrada_final = input(f"Índice final (1-{len(arquivos_exemplo)}): ").strip()
+        
+        # Se o usuário der enter, usar primeiro e último índice
+        index_inicial = int(entrada_inicial) if entrada_inicial else 1
+        index_final = int(entrada_final) if entrada_final else len(arquivos_exemplo)
         
         if index_inicial < 1 or index_final > len(arquivos_exemplo) or index_inicial > index_final:
             print("Erro: Índices inválidos.")
