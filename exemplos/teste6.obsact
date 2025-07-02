@@ -1,0 +1,6 @@
+dispositivo : { alarme, ativo }
+dispositivo : { celular }
+
+set ativo = TRUE.
+
+se ativo == TRUE entao enviar alerta ("Sistema ativado") celular.

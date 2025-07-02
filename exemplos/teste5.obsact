@@ -1,0 +1,8 @@
+dispositivo : { lampada }
+dispositivo : { sensor1 }
+dispositivo : { sensor2 }
+
+set sensor1 = 1.
+set sensor2 = 2.
+
+se sensor1 == 1 && sensor2 == 2 entao ligar lampada.
