@@ -12,8 +12,9 @@ observacoes = set()
 def p_program(p):
     'program : devices cmds'
     codigo.insert(0, '#include <stdio.h>\n\n')
-    codigo.insert(1, gerar_funcoes_fixas())
-    codigo.insert(2, '\nint main() {\n')
+    codigo.insert(1, '#define TRUE 1\n#define FALSE 0\n\n')
+    codigo.insert(2, gerar_funcoes_fixas())
+    codigo.insert(3, '\nint main() {\n')
     codigo.append('return 0;\n}\n')
 
 def p_devices_mult(p):
@@ -117,8 +118,13 @@ def p_error(p):
 
 def gerar_funcoes_fixas():
     return '''\
-void ligar(const char* d) { printf("%s ligado!\\n", d); }
-void desligar(const char* d) { printf("%s desligado!\\n", d); }
+/* Funções fixas do programa */
+void ligar(const char* d) { 
+    printf("%s ligado!\\n", d); 
+}
+void desligar(const char* d) { 
+    printf("%s desligado!\\n", d); 
+}
 void alerta(const char* d, const char* m) {
     printf("%s recebeu o alerta:\\n", d);
     printf("%s\\n", m);
@@ -126,17 +132,19 @@ void alerta(const char* d, const char* m) {
 void alerta_com_var(const char* d, const char* m, int v) {
     printf("%s recebeu o alerta:\\n", d);
     printf("%s %d\\n", m, v);
-}'''
+}
+/* Fim das funções fixas */
+'''
 
 # ---------- Execução ----------
 
 parser = yacc.yacc()
 
-def parse_input(data):
+def parse_input(data, arquivo_saida="output.c"):
     global codigo
     codigo = []
     parser.parse(data)
 
-    with open("output.c", "w") as f:
+    with open(arquivo_saida, "w") as f:
         for linha in codigo:
             f.write(linha)
