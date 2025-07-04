@@ -1,0 +1,19 @@
+# Comandos para compilar e executar os testes ObsAct
+
+# Para cada teste, execute:
+
+gcc -o outputs/execs/teste1 outputs/teste1.c && ./outputs/execs/teste1
+
+gcc -o outputs/execs/teste2 outputs/teste2.c && ./outputs/execs/teste2
+
+gcc -o outputs/execs/teste3 outputs/teste3.c && ./outputs/execs/teste3
+
+gcc -o outputs/execs/teste4 outputs/teste4.c && ./outputs/execs/teste4
+
+gcc -o outputs/execs/teste5 outputs/teste5.c && ./outputs/execs/teste5
+
+gcc -o outputs/execs/teste6 outputs/teste6.c && ./outputs/execs/teste6
+
+gcc -o outputs/execs/teste7 outputs/teste7.c && ./outputs/execs/teste7
+
+gcc -o outputs/execs/teste8 outputs/teste8.c && ./outputs/execs/teste8 

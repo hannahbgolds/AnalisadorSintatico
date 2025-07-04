@@ -27,7 +27,7 @@ int Termometro = 0;
 int temperatura = 0;
 temperatura = 37;
 alerta_com_var("Termometro", "Temperatura em", temperatura);
-alerta("monitor", "mensagem");
-alerta("celular", "mensagem");
+alerta("monitor", "Alerta geral!");
+alerta("celular", "Alerta geral!");
 return 0;
 }

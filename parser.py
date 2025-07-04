@@ -98,15 +98,17 @@ def p_act_alerta_var(p):
 
 def p_act_broadcast(p):
     'act : ENVIAR ALERTA ABREPAREN STRING FECHAPAREN PARA TODOS DOISPONTOS lista_ids'
-    p[0] = p[9]  # já vem com várias chamadas alerta(...)
+    mensagem = p[4]
+    ids = p[9]
+    p[0] = ''.join([f'alerta("{id}", "{mensagem}");\n' for id in ids])
 
 def p_lista_ids(p):
     'lista_ids : ID VIRGULA lista_ids'
-    p[0] = f'alerta("{p[1]}", "mensagem");\n{p[3]}'
+    p[0] = [p[1]] + p[3]
 
 def p_lista_ids_single(p):
     'lista_ids : ID'
-    p[0] = f'alerta("{p[1]}", "mensagem");\n'
+    p[0] = [p[1]]
 
 def p_error(p):
     if p:
